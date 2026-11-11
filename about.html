@@ -17,9 +17,10 @@
 .vision h2::before,.vision h2::after{content:"“";display:block;font-size:1.6em;line-height:.6;color:rgba(158,18,25,.35)}
 .vision h2::after{display:none}
 @media (max-width:860px){
- .ahero{align-items:flex-start}
- .ahero::after{background:linear-gradient(180deg,rgba(255,240,196,.95),rgba(255,236,170,.8) 46%,rgba(255,236,170,0) 70%),linear-gradient(0deg,#F7C843,rgba(247,200,67,0) 12%)}
- .ahero picture img{object-position:50% 100%}
+ .ahero{flex-direction:column;align-items:stretch;min-height:0;overflow:visible}
+ .ahero::after{display:none}
+ .ahero picture{position:relative;order:2;inset:auto;width:auto;height:auto;margin:4vh 16px 0;border-radius:24px;overflow:hidden;box-shadow:0 20px 44px rgba(120,55,0,.25)}
+ .ahero picture img{position:static;width:100%;height:min(72svh,560px);object-position:50% 70%}
  .ahero .txt{padding-top:calc(4.5vh + 70px);text-align:center;margin:0 auto}.ahero .lead{margin-left:auto;margin-right:auto}
  .who{grid-template-columns:1fr;gap:18px;margin-top:4vh}
 }
