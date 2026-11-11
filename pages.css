@@ -1,0 +1,45 @@
+/* Samraksha inner pages (About, Export): Golden Hour style */
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;color:#3A1D0E;font:400 1.1rem/1.65 'Nunito Sans',sans-serif;
+ background:linear-gradient(#F7C843,#F3B12F 45%,#EDA935 75%,#F3B12F);overflow-x:hidden}
+#dust{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:3}
+h1,h2,h3{font-family:Fraunces,serif;font-weight:600;color:#9E1219;margin:0}
+h1{font-size:clamp(2.4rem,4.6vw,4.6rem);line-height:1.05}
+h2{font-size:clamp(2rem,3.4vw,3.2rem);line-height:1.1}
+h3{font-size:1.45rem;line-height:1.2}
+p{margin:0}
+.eyebrow{font-size:.85rem;letter-spacing:.28em;text-transform:uppercase;margin:0 0 18px;color:#7A3608;font-weight:700}
+.lead{font-size:clamp(1.1rem,1.35vw,1.3rem);max-width:46ch;margin-top:22px;color:#4A2410}
+.logo{position:absolute;z-index:5;top:3.5vh;left:6vw;display:block;filter:drop-shadow(0 1px 1px rgba(90,30,0,.45)) drop-shadow(0 0 16px rgba(255,246,214,.85))}
+.logo img{display:block;width:clamp(140px,12vw,190px);height:auto}
+.wrap{max-width:1250px;margin:0 auto;padding:0 6vw}
+.sec{position:relative;padding:12vh 0}
+.card{background:rgba(255,248,225,.9);border-radius:24px;padding:30px 30px;box-shadow:0 18px 40px rgba(120,55,0,.16)}
+.ico{width:58px;height:58px;border-radius:16px;background:#9E1219;display:grid;place-items:center;margin-bottom:18px}
+.ico svg{width:30px;height:30px;stroke:#FFF8E1;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.card p{margin-top:10px;color:#4A2410}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:6vh}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:6vh}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+.chip{padding:8px 16px;border-radius:99px;background:#FFF8E1;border:1.5px solid #E2B66A;font-weight:700;color:#5A2A08;font-size:.98rem}
+.chip.r{background:#9E1219;border-color:#9E1219;color:#FFF8E1}
+.btns{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+.btn{display:inline-block;padding:15px 30px;border-radius:99px;border:2px solid #9E1219;color:#9E1219;text-decoration:none;font-weight:700;background:rgba(255,248,225,.55)}
+.btn.f{background:#9E1219;color:#FFF8E1;box-shadow:0 8px 20px rgba(120,20,10,.3)}
+.band{text-align:center;padding:14vh 6vw;background:radial-gradient(ellipse 60% 60% at 50% 50%,rgba(255,246,214,.75),rgba(255,236,170,0) 70%)}
+.band h2{max-width:22ch;margin:0 auto;font-size:clamp(2.1rem,4vw,3.8rem);text-shadow:0 2px 24px rgba(255,240,190,.6)}
+.foot{display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center;padding:6vh 6vw 7vh;border-top:1px solid rgba(122,54,8,.25);
+ max-width:1250px;margin:0 auto;color:#5A2A08;font-size:.95rem}
+.foot img{width:150px;height:auto}
+.rv{opacity:0;transform:translateY(40px)}
+.no-js .rv,.reduce .rv{opacity:1;transform:none}
+@media (max-width:860px){
+ body{font-size:1.02rem}
+ .logo{left:0;right:0;margin:0 auto;width:max-content;top:4.5vh}.logo img{width:110px}
+ .wrap{padding:0 20px}.sec{padding:8vh 0}
+ .grid3,.grid2{grid-template-columns:1fr;gap:18px;margin-top:4vh}
+ .card{padding:24px 22px}
+ .band{padding:10vh 22px}
+ .btns .btn{flex:1 1 100%;text-align:center}
+}

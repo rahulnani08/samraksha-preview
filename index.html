@@ -65,7 +65,7 @@ h1 span,h2 span{display:block;overflow:hidden}h1 b,h2 b{display:block;font-weigh
 .form input:focus,.form textarea:focus{outline:3px solid rgba(158,18,25,.25);border-color:#9E1219}
 .form .btn{margin:16px 0 0;border:0;cursor:pointer;font:700 1.05rem 'Nunito Sans',sans-serif}
 .hp{position:absolute;left:-9999px}.fstatus{margin:12px 0 0;font-weight:700;color:#7A3608;min-height:1.4em}
-.addr h3{margin:0 0 6px;color:#9E1219;font:600 1.4rem Fraunces,serif}.addr p{margin:0;line-height:1.6}
+.addr h3{margin:0 0 6px;color:#9E1219;font:600 1.4rem Fraunces,serif}.addr p{margin:0;line-height:1.6}.addr .co{font-weight:700;letter-spacing:.04em;color:#5A2A08;margin-bottom:2px}
 .foot{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:0 1vw;text-align:center;color:#5A2A08;font-size:.95rem}
 .flogo{width:150px;height:auto}.fbadge{width:64px;height:auto;border-radius:50%}.foot p{margin:0}
 .lines{position:relative;min-height:12em}.lines h2{position:absolute;left:0;right:0;top:0;visibility:hidden}
@@ -148,7 +148,7 @@ h1 span,h2 span{display:block;overflow:hidden}h1 b,h2 b{display:block;font-weigh
 <section class="end" id="contact">
  <div class="egrid">
   <div class="eleft">
-   <p class="eyebrow">1 kg · 5 kg</p><h2>Genuine quality in every pack</h2>
+   <p class="eyebrow">1 kg · 5 kg · 10 kg · 25 kg</p><h2>Genuine quality in every pack</h2>
    <picture><source srcset="img/packs.webp" type="image/webp"><img class="packs" src="img/packs.jpg" alt="Samraksha Whole Wheat Chakki Fresh Atta in 5 kg and 1 kg packs" width="1240" height="990"></picture>
    <a class="btn f" href="https://wa.me/918686737327?text=Hi%2C%20I'd%20like%20to%20order%20Samraksha%20Atta." target="_blank" rel="noopener">WhatsApp us</a>
   </div>
@@ -165,12 +165,13 @@ h1 span,h2 span{display:block;overflow:hidden}h1 b,h2 b{display:block;font-weigh
  </div>
  <div class="ebot">
   <h2 class="vh">Visit us</h2>
-  <address class="card addr"><h3>Office</h3><p>6-105/A/104, Kalanjali Siddhartha arcade,<br>Suchitra, Jeedimetla,<br>Hyderabad, Telangana - 500001</p></address>
-  <address class="card addr"><h3>Factory</h3><p>Sy.no: 1149/E/2/2, Ailapur village,<br>Korutla mandal, Jagtial district,<br>Telangana. Pin: 505330</p></address>
+  <address class="card addr"><h3>Office</h3><p class="co">SAMRAKSHA INDUSTRIES PVT. LTD.</p><p>6-105/A/104, Kalanjali Siddhartha arcade,<br>Suchitra, Jeedimetla,<br>Hyderabad, Telangana - 500001</p></address>
+  <address class="card addr"><h3>Factory</h3><p class="co">NAVYASREE AGRO INDUSTRIES</p><p>Sy.no: 1149/E/2/2, Ailapur village,<br>Korutla mandal, Jagtial district,<br>Telangana. Pin: 505330</p></address>
   <footer class="foot"><img class="flogo" src="img/logo-clear.png" alt="Samraksha" width="600" height="262">
-   <p><b>Navyasree Agro Industries</b><br>© 2026 Navyasree Agro Industries</p></footer>
+   <p><b>© 2026 Samraksha Industries Pvt. Ltd.</b><br>Manufactured by Navyasree Agro Industries</p></footer>
  </div>
 </section>
+<script src="menu.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <script>
@@ -213,6 +214,7 @@ gsap.timeline({defaults:{ease:'none'},scrollTrigger:{trigger:'#roti',start:'top 
 gsap.from('.packs',{y:90,opacity:0,scale:.95,duration:1.2,ease:'power3.out',scrollTrigger:{trigger:'.packs',start:'top 85%'}});
 /* sample form: not connected until the Web3Forms key is added */
 const ph=document.getElementById('f-phone');
+if(new URLSearchParams(location.search).get('enquiry')==='export')document.getElementById('f-message').value='Export enquiry: ';
 const cleanPh=()=>{let d=ph.value.replace(/\D/g,'');if(d.length>10)d=d.replace(/^(91|0)/,'');ph.value=d;
  ph.setCustomValidity(/^[6-9]\d{9}$/.test(d)?'':'Please enter a 10-digit mobile number.')};
 ph.addEventListener('blur',cleanPh);ph.addEventListener('input',()=>ph.setCustomValidity(''));
