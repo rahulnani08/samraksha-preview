@@ -33,7 +33,7 @@ const nav=links.map(([h,t])=>`<a class="ml" href="${h}"${h===here?' aria-current
 document.body.insertAdjacentHTML('afterbegin',
  `<button class="mbtn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mpanel"><i></i><i></i><i></i></button>
  <nav class="mpanel" id="mpanel" aria-label="Main menu"><a href="${HOME}"><img class="mlogo" src="img/logo-clear.png" alt="Samraksha home"></a>${nav}
- <a class="mwa" href="https://wa.me/918686737327?text=Hi%2C%20I'd%20like%20to%20know%20more%20about%20Samraksha%20Atta." target="_blank" rel="noopener">WhatsApp us</a></nav>`);
+ <a class="mwa" href="https://wa.me/919121314275?text=Hi%2C%20I'd%20like%20to%20know%20more%20about%20Samraksha%20Atta." target="_blank" rel="noopener">WhatsApp us</a></nav>`);
 const b=document.querySelector('.mbtn'),set=o=>{document.body.classList.toggle('mopen',o);b.setAttribute('aria-expanded',o);b.setAttribute('aria-label',o?'Close menu':'Open menu')};
 b.addEventListener('click',()=>set(!document.body.classList.contains('mopen')));
 addEventListener('keydown',e=>{if(e.key==='Escape')set(false)});
