@@ -34,6 +34,7 @@ h1 span,h2 span{display:block;overflow:hidden}h1 b,h2 b{display:block;font-weigh
 /* chapati scene */
 .bstage::after{content:"";position:absolute;inset:auto 0 0;height:14vh;z-index:2;pointer-events:none;background:linear-gradient(0deg,#EDA935,rgba(237,169,53,0))}
 .roti{position:relative;height:200vh}
+
 .rstage{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;background:#F3B12F}
 .rstage::before{content:"";position:absolute;inset:0 0 auto;height:16vh;z-index:2;pointer-events:none;background:linear-gradient(#EDA935,rgba(237,169,53,0))}
 .rwrap{position:absolute;inset:0;will-change:transform}
@@ -83,7 +84,7 @@ h1 span,h2 span{display:block;overflow:hidden}h1 b,h2 b{display:block;font-weigh
  .txt{position:absolute;left:0;right:0;top:9vh;padding:0 22px;text-align:center}
  .hero h1{color:#A3141B;font-size:clamp(2.3rem,10.5vw,3.2rem)}.hero .eyebrow,.hero .by{color:#5A2A08}
  .hero .txt{top:7vh}.eyebrow{font-size:.68rem;margin-bottom:12px}.by{display:none}
- .bowl{height:180vh}.bstage{background:#F3B12F}.bstage::before{height:10vh}
+ .bowl{height:auto}.bstage{background:#F3B12F}.bstage::before{height:10vh}
  .bimg img{object-position:50% 100%;transform-origin:50% 62%}.shine{left:0;width:100%;top:40%;height:40%}
  .blogo{left:0;right:0;margin:0 auto;width:max-content;top:4vh}.blogo img{width:96px}
  .btxt{left:0;right:0;top:calc(4vh + 58px);translate:none;padding:0 22px;text-align:center}
@@ -91,7 +92,7 @@ h1 span,h2 span{display:block;overflow:hidden}h1 b,h2 b{display:block;font-weigh
  .egrid{grid-template-columns:1fr;gap:5vh;min-height:0}.card{padding:24px 20px}.frow{grid-template-columns:1fr;gap:0}
  .eleft h2{white-space:normal}.ebot{grid-template-columns:1fr;gap:18px;border-top:0;padding-top:0;margin-top:5vh}.vh{display:block;color:#9E1219;margin:0}
  .foot{margin-top:3vh;padding-top:4vh;border-top:1px solid rgba(122,54,8,.25)}
- .bstage::after{height:9vh}.rstage::after{height:9vh}.end{padding:9vh 18px 5vh}.packs{width:100%;margin:3vh auto}.end h2{font-size:clamp(2rem,9vw,2.8rem)}.roti{height:180vh}.rstage::before{height:10vh}
+ .bstage::after{height:9vh}.rstage::after{height:9vh}.end{padding:9vh 18px 5vh}.packs{width:100%;margin:3vh auto}.end h2{font-size:clamp(2rem,9vw,2.8rem)}.roti{height:auto}.rstage::before{height:10vh}
  .rwrap img{object-position:50% 100%}
  .rtxt{left:0;right:0;top:calc(4vh + 58px);padding:0 22px;text-align:center}
  .roti h2{font-size:clamp(2.3rem,11vw,3.2rem);text-shadow:0 2px 20px rgba(255,240,190,.5)}.rnote{font-size:.95rem;margin-top:1.2vh}
@@ -190,8 +191,12 @@ function placeGlow(){const img=document.getElementById('fimg'),g=document.getEle
  const tall=innerWidth<=860,k=tall?SUN.tall:SUN.wide,p=img.parentElement.getBoundingClientRect(),sc=Math.max(p.width/k.w,p.height/k.h);
  g.style.left=(p.left-r.left+(p.width-k.w*sc)*k.px+k.x*sc)+'px';g.style.top=(p.top-r.top+(p.height-k.h*sc)*(tall?0:.5)+k.y*sc)+'px';}
 placeGlow();addEventListener('resize',placeGlow);
-gsap.timeline({defaults:{ease:'none'},scrollTrigger:{trigger:'#bowl',start:'top 65%',end:'bottom bottom',scrub:.6}})
- .fromTo('#bimg',{scale:1},{scale:1.12,duration:3.4},0)
+/* laptop: zoom follows the scroll. phone: one normal screen, zoom plays by itself when it comes into view */
+const PHONE=matchMedia('(max-width:860px)').matches;
+const zoomST=t=>PHONE?{trigger:t,start:'top 70%',toggleActions:'play none none none'}:{trigger:t,start:'top 65%',end:'bottom bottom',scrub:.6};
+const zoomDef=PHONE?{ease:'power1.out'}:{ease:'none'};
+gsap.timeline({defaults:zoomDef,scrollTrigger:zoomST('#bowl')})
+ .fromTo('#bimg',{scale:1},{scale:1.12,duration:PHONE?6:3.4,ease:PHONE?'sine.out':'none'},0)
  .fromTo('.bowl .eyebrow',{autoAlpha:0,y:20},{autoAlpha:1,y:0,duration:.4},.1)
  .fromTo('.bowl .blogo',{autoAlpha:0,y:-20},{autoAlpha:1,y:0,duration:.4},0)
  .fromTo('.l1',{autoAlpha:0,y:40},{autoAlpha:1,y:0,duration:.5},.2)
@@ -204,8 +209,8 @@ function placeSteam(){const img=document.getElementById('rimg'),st=document.getE
  Object.assign(st.style,{left:(cx-k.sw*sc/2)+'px',top:(cy-k.sh*sc)+'px',width:k.sw*sc+'px',height:k.sh*sc+'px'});
  w.style.transformOrigin=cx+'px '+cy+'px';}
 placeSteam();addEventListener('resize',placeSteam);
-gsap.timeline({defaults:{ease:'none'},scrollTrigger:{trigger:'#roti',start:'top 65%',end:'bottom bottom',scrub:.6}})
- .fromTo('#rwrap',{scale:1},{scale:1.14,duration:3.4},0)
+gsap.timeline({defaults:zoomDef,scrollTrigger:zoomST('#roti')})
+ .fromTo('#rwrap',{scale:1},{scale:1.14,duration:PHONE?6:3.4,ease:PHONE?'sine.out':'none'},0)
  .fromTo('.rlogo',{autoAlpha:0,y:-20},{autoAlpha:1,y:0,duration:.4},0)
  .fromTo('.roti .eyebrow',{autoAlpha:0,y:20},{autoAlpha:1,y:0,duration:.4},.1)
  .fromTo('.r1',{autoAlpha:0,y:40},{autoAlpha:1,y:0,duration:.5},.2)
